@@ -22,7 +22,7 @@ def get_raw_data():
         print("Day of the month (e.g. 1, 2, 3,...), pH, Lead, Cadmium, Zinc, Mercury, Arsenic, Chromium, Nickel.\n")
         print("Please make sure your units are in mg/L.\n")
 
-        raw_data_str = input("Enter your raw data here:")
+        raw_data_str = input("Enter your raw data here:\n")
         raw_data = raw_data_str.split(",")
         validate_raw_data(raw_data)
         

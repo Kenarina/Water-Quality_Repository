@@ -1,32 +1,53 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Water Quality Advisory #
 
-Welcome,
+The Water Quality Advisory (WaQua) is a simple tool that can be adapted for water water quality monitoring and water-safety related advisory services. The potential for its further development is huge. In its current form, the Advisory is is command-line based application.  
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+## Description ##
 
-## Reminders
+The WaQua application starts with a request for user input. Numerical data from measurement of water quality parameters (including pH and concentrations of trace heavy metals: Lead, CCadmium, Zinc, Mercury, Arsenic, Chromium and Nickel), along with numerical day of the month, are entered. The user data is validated for completeness and writted to a google spreadsheet. While there, the metal concentration data is isolated in another sheet and used to compute a weekly summary, using python. The summary data (average, median,minimum and maximum,) is then written in a separate sheet within the parent file. The weekly average concentration values are then compared with the Maximum Contamination Limits tolerable for drinking water. On the basis of this comparison, advisory message is printed for the user. 
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+The live site is available [here](https://kenarina.github.io//)
 
-## Creating the Heroku app
+## User stories ##
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+The following considerations of the user experience underly the design of the website:  
 
-1. `heroku/python`
-2. `heroku/nodejs`
+1. A simple and easily understandable application.  
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+2. Some degree of interactivity to the extent of input of user data and feedback regarding the progress of the program.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+4. Relevance to daily living, hence potentially useful on daily basis.
 
-Connect your GitHub repository and deploy as normal.
+# UX/UI Design #
 
-## Constraints
+## Structure ##
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+Although this is a command-line application, the process of the application was envisioned using a chart created via Lucidchart [Lucidchart](https://lucid.app/lucidchart/20e7547c-a810-4419-be15-12fae9b00459/edit?viewport_loc=218%2C127%2C1645%2C695%2C0_0&invitationId=inv_246535d8-66cd-430b-927c-db1e51849ffa):  
 
----
+## Testing ##
+Performance of the written python code to achieve the desired outcome was regularly tested using print statements in stepwise and consistent manner. Corrections were made and tested iteratively until the desired outcome was achieved.
 
-Happy coding!
+
+##  Technologies ##
+ 
+[Codeanywhere](https://codeanywhere.com/) cloud IDE for writing the program. 
+[Lucidchart](https://lucidchart.com/) for process workflow design.  
+[GitHub](https://github.com/) to host the source code.
+[Git](https://git-scm.com/) for version control. 
+
+Other resources, including course material from Code Institute, were consulted from time to time. Examples include: [StackOverflow](https://stackoverflow.com/).
+
+ However, the course material from Code Institute was the primary resource. 
+
+ Microsoft Edge chat was used to get insight into some coding solutions, especially the function for comparing weekly averages with MCLs. 
+
+## Deployment ##
+
+This project was deployed to Heroku. The live site is [here]()
+
+### Deployment procedure: ###
+
+
+## Acknowledgements ##
+
+I am always grateful to Ronan McClelland, for his very helpful advice towards this project. Special thanks to the Code Institute Student Care team for their support along this journey.
