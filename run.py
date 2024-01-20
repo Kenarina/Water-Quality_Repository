@@ -20,10 +20,11 @@ def get_raw_data():
         print("Please enter your raw data below.\n")
         print("Please enter your measurements in the following order:\n")
         print("Day of the month (e.g. 1, 2, 3,...), pH, Lead, Cadmium, Zinc, Mercury, Arsenic, Chromium, Nickel.\n")
-        print("Please make sure your units are in mg/L.\n")
+        print("Please note that only numerical raw data is accepted.\n")
 
         raw_data_str = input("Enter your raw data here:\n")
-        raw_data = raw_data_str.split(",")
+        split_raw_data = raw_data_str.split(",")
+        raw_data = [round(float(value), 3) for value in split_raw_data]
         validate_raw_data(raw_data)
         
         if validate_raw_data(raw_data):
@@ -36,6 +37,7 @@ def validate_raw_data(entries):
     Validates data using a try statement. 
     Ensures that entered values are are exactly 9 entries.
     """
+
     try:
         if len(entries) != 9:
             raise ValueError(
