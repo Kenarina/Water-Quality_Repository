@@ -226,7 +226,7 @@ def compare_mean_with_MCL():
 
 
 def end_of_program_notice():
-    print("Thank you for submitting your data.")
+    print("Thank you for submitting your data.\n")
 
 
 def main():
