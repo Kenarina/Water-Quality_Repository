@@ -56,6 +56,37 @@ def export_to_worksheet(data, worksheet):
     raw_data_worksheet.append_row(data)
     print(f"{worksheet} worksheet updated successfully\n")
 
+    """
+    Calculates mean, median, min and max for week 1 of the month.
+    """
+def get_week1_metal_data():
+    """
+    Collects columns of data from the metals_only worksheet and returns the data
+    as a list of lists.
+    """
+    week1_metal_data = SHEET.worksheet("metals_only")
+
+    columns = []
+    for ind in range(1, 8):
+        column = week1_metal_data.col_values(ind)
+        columns.append(column[1:8])
+
+    return columns
+
+def compute_week1_average(data):
+    """
+    Calculate the average concentration for each metal for week1
+    """
+    print("Calculating week 1 averages...\n")
+    
+    week1_average = []
+
+    for column in data:
+        float_column = [float(num) for num in column]
+        average = sum(float_column) / len(float_column)
+        week1_average.append(average)
+
+    return week1_average
 
 
 def main():
@@ -64,6 +95,11 @@ def main():
     """
     raw_data = get_raw_data()
     export_to_worksheet(raw_data, "user-data")
+    formatted_data = [round(float(value), 3) for value in raw_data[-7:]]
+    export_to_worksheet(formatted_data, "metals_only")
+    metal_data = get_week1_metal_data()
+    average_for_week1 =  compute_week1_average(metal_data)
+    export_to_worksheet(average_for_week1, "Week1_Summary")
 
 main()
 
