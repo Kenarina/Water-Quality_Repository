@@ -234,6 +234,3 @@ def main():
     compare_mean_with_MCL()
 
 main()
-
-
-
