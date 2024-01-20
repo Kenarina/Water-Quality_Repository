@@ -25,12 +25,11 @@ def get_raw_data():
         raw_data_str = input("Enter your raw data here:")
         raw_data = raw_data_str.split(",")
         validate_raw_data(raw_data)
-
+        
         if validate_raw_data(raw_data):
-            print("Data is valid.")
+            print("Data is valid.\n")
             break
     return raw_data
-    
 
 def validate_raw_data(entries):
     """
@@ -48,4 +47,25 @@ def validate_raw_data(entries):
     
     return True
 
-get_raw_data()
+def export_to_worksheet(data, worksheet):
+    """
+    Receives raw data from the user and exports it to a spreadsheet.
+    """
+    print(f"Exporting raw data to {worksheet} worksheet...\n")
+    raw_data_worksheet = SHEET.worksheet(worksheet)
+    raw_data_worksheet.append_row(data)
+    print(f"{worksheet} worksheet updated successfully\n")
+
+
+
+def main():
+    """
+    Runs all program functions.
+    """
+    raw_data = get_raw_data()
+    export_to_worksheet(raw_data, "user-data")
+
+main()
+
+
+
