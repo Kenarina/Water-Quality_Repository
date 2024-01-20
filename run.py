@@ -37,7 +37,6 @@ def validate_raw_data(entries):
     Validates data using a try statement. 
     Ensures that entered values are are exactly 9 entries.
     """
-
     try:
         if len(entries) != 9:
             raise ValueError(
