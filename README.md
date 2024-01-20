@@ -25,7 +25,7 @@ The following considerations of the user experience underly the design of the we
 Although this is a command-line application, the process of the application was envisioned using a chart created via Lucidchart [Lucidchart](https://lucid.app/lucidchart/20e7547c-a810-4419-be15-12fae9b00459/edit?viewport_loc=218%2C127%2C1645%2C695%2C0_0&invitationId=inv_246535d8-66cd-430b-927c-db1e51849ffa):  
 
 ## Testing ##
-Performance of the written python code to achieve the desired outcome was regularly tested using print statements to the terminal in stepwise and consistent manner. Corrections were made and tested iteratively until the desired outcome was achieved. The program alsoperformed successfully on the Heroku mock terminal.
+Performance of the written python code to achieve the desired outcome was regularly tested using print statements to the terminal in stepwise and consistent manner. Corrections were made and tested iteratively until the desired outcome was achieved. The program alsoperformed successfully on the Heroku mock terminal. The code was also tested using CI Python Linter and the detected bugs were addressed. Just one bug (153: E501 line too long (85 > 79 characters)) was not addressed as it was just 5 characters longer in a function.
 
 
 ##  Technologies ##
