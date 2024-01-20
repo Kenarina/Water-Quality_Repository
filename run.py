@@ -222,7 +222,7 @@ def main():
     """
     raw_data = get_raw_data()
     export_to_worksheet(raw_data, "user-data")
-    formatted_data = [round(float(value), 3) for value in raw_data[-7:]]
+    formatted_data = [round(value, 3) for value in raw_data[-7:]]
     export_to_worksheet(formatted_data, "metals_only")
     metal_data = get_week1_metal_data()
     average_for_week1 = compute_week1_average(metal_data)
