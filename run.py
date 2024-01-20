@@ -120,7 +120,7 @@ def compute_week1_minima(data):
 
 def compute_week1_maxima(data):
     """
-    Calculate the minimum  concentration for each metal for week1
+    Calculate the maximum  concentration for each metal for week1
     """
     print("Calculating week 1 minima...\n")
     
@@ -132,6 +132,87 @@ def compute_week1_maxima(data):
         week1_maxima.append(maximum)
 
     return week1_maxima
+
+def compare_mean_with_MCL():
+    """
+    Compares calculated average metal concentration with 
+    Maximum Contamination Limit (MCL) of the metals and prints
+    an appropriate message to the terminal.
+    """
+
+    print("Comparing your weekly average with recommended MCLs...\n")
+
+    sheet1 = GSPREAD_CLIENT.open('Water-Quality-Advisory').worksheet('Week1_Summary')
+    sheet2 = GSPREAD_CLIENT.open('Water-Quality-Advisory').worksheet('MCLs')
+
+    # Compare the values in cell A2 of each sheet
+
+
+    if sheet1.acell('A2').value == sheet2.acell('A2').value:
+        print("The concentration of Lead is at the maximum contamination limit."
+        "Your water may not be safe for consumption.\n")
+    elif sheet1.acell('A2').value > sheet2.acell('A2').value:
+        print(f"The concentration of Lead exceeds the maximum contamination limit."
+            "Your water is not safe for consumption.\n")
+    else:
+        print(f"The concentration of Lead is below maximum contamination limit.\n")
+
+
+    if sheet1.acell('B2').value == sheet2.acell('B2').value:
+        print("The concentration of Cadmium is at the maximum contamination limit."
+        "Your water may not be safe for consumption.\n")
+    elif sheet1.acell('B2').value > sheet2.acell('B2').value:
+        print(f"The concentration of Cadmium exceeds the maximum contamination limit."
+            "Your water is not safe for consumption.\n")
+    else:
+        print(f"The concentration of Cadmium is below maximum contamination limit.\n")
+
+
+    if sheet1.acell('C2').value == sheet2.acell('C2').value:
+        print("The concentration of Zinc is at the maximum contamination limit."
+        "Your water may not be safe for consumption.\n")
+    elif sheet1.acell('C2').value > sheet2.acell('C2').value:
+        print(f"The concentration of Zinc exceeds the maximum contamination limit."
+            "Your water is not safe for consumption.\n")
+    else:
+        print(f"The concentration of Zinc is below maximum contamination limit.\n")
+
+    if sheet1.acell('D2').value == sheet2.acell('D2').value:
+        print("The concentration of Mercury is at the maximum contamination limit."
+        "Your water may not be safe for consumption.\n")
+    elif sheet1.acell('D2').value > sheet2.acell('D2').value:
+        print(f"The concentration of Mercury exceeds the maximum contamination limit."
+            "Your water is not safe for consumption.\n")
+    else:
+        print(f"The concentration of Mercury is below maximum contamination limit.")
+
+    if sheet1.acell('E2').value == sheet2.acell('E2').value:
+        print("The concentration of Arsenic is at the maximum contamination limit."
+        "Your water may not be safe for consumption.\n")
+    elif sheet1.acell('E2').value > sheet2.acell('E2').value:
+        print(f"The concentration of Arsenic exceeds the maximum contamination limit."
+            "Your water is not safe for consumption.\n")
+    else:
+        print(f"The concentration of Arsenic is below maximum contamination limit.\n")
+
+    if sheet1.acell('F2').value == sheet2.acell('F2').value:
+        print("The concentration of Chromium is at the maximum contamination limit."
+        "Your water may not be safe for consumption.\n")
+    elif sheet1.acell('F2').value > sheet2.acell('F2').value:
+        print(f"The concentration of Chromium exceeds the maximum contamination limit."
+            "Your water is not safe for consumption.\n")
+    else:
+        print(f"The concentration of Chromium is below maximum contamination limit.\n")
+
+    if sheet1.acell('G2').value == sheet2.acell('G2').value:
+        print("The concentration of Nickel is at the maximum contamination limit."
+        "Your water may not be safe for consumption.\n")
+    elif sheet1.acell('G2').value > sheet2.acell('G2').value:
+        print(f"The concentration of Nickel exceeds the maximum contamination limit."
+            "Your water is not safe for consumption.\n")
+    else:
+        print(f"The concentration of Nickel is below maximum contamination limit.\n")
+
 
 def main():
     """
@@ -150,6 +231,8 @@ def main():
     export_to_worksheet(minimum_for_week1, "Week1_Summary")
     maximum_for_week1 =  compute_week1_maxima(metal_data)
     export_to_worksheet(maximum_for_week1, "Week1_Summary")
+    compare_mean_with_MCL()
+
 main()
 
 
