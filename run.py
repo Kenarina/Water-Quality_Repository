@@ -75,7 +75,7 @@ def get_week1_metal_data():
 
 def compute_week1_average(data):
     """
-    Calculate the average concentration for each metal for week1
+    Calculates the average concentration for each metal for week1
     """
     print("Calculating week 1 averages...\n")
     
@@ -88,6 +88,50 @@ def compute_week1_average(data):
 
     return week1_average
 
+def compute_week1_median(data):
+    """
+    Calculates the median  concentration for each metal for week1
+    """
+    print("Calculating week 1 medians...\n")
+    
+    week1_median = []
+
+    for column in data:
+        float_column = [float(num) for num in column]
+        median = sorted(float_column)[len(float_column) // 2]
+        week1_median.append(median)
+
+    return week1_median
+
+def compute_week1_minima(data):
+    """
+    Calculates the minimum  concentration for each metal for week1
+    """
+    print("Calculating week 1 minima...\n")
+    
+    week1_minima = []
+
+    for column in data:
+        float_column = [float(num) for num in column]
+        minimum = min(float_column)
+        week1_minima.append(minimum)
+
+    return week1_minima
+
+def compute_week1_maxima(data):
+    """
+    Calculate the minimum  concentration for each metal for week1
+    """
+    print("Calculating week 1 minima...\n")
+    
+    week1_maxima = []
+
+    for column in data:
+        float_column = [float(num) for num in column]
+        maximum = max(float_column)
+        week1_maxima.append(maximum)
+
+    return week1_maxima
 
 def main():
     """
@@ -98,9 +142,14 @@ def main():
     formatted_data = [round(float(value), 3) for value in raw_data[-7:]]
     export_to_worksheet(formatted_data, "metals_only")
     metal_data = get_week1_metal_data()
-    average_for_week1 =  compute_week1_average(metal_data)
+    average_for_week1 = compute_week1_average(metal_data)
     export_to_worksheet(average_for_week1, "Week1_Summary")
-
+    median_for_week1 = compute_week1_median(metal_data)
+    export_to_worksheet(median_for_week1, "Week1_Summary")
+    minimum_for_week1 = compute_week1_minima(metal_data)
+    export_to_worksheet(minimum_for_week1, "Week1_Summary")
+    maximum_for_week1 =  compute_week1_maxima(metal_data)
+    export_to_worksheet(maximum_for_week1, "Week1_Summary")
 main()
 
 
